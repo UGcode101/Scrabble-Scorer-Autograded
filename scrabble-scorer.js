@@ -32,22 +32,8 @@ let vowelBonusScorer = function (word) {
   return score;
 };
 
-function oldScrabbleScorer(word) {
-  word = word.toUpperCase();
-  let letterPoints = "";
-
-  for (let i = 0; i < word.length; i++) {
-    for (const pointValue in oldPointStructure) {
-      if (oldPointStructure[pointValue].includes(word[i])) {
-        letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
-      }
-    }
-  }
-  return letterPoints;
-}
-
-let scrabbleScorer = function oldScrabbleScorer(word) {
-  word = word.toUpperCase();
+let scrabbleScorer = function (word) {
+  word = word.toLowerCase();
   let score = 0;
 
   for (let i = 0; i < word.length; i++) {
@@ -59,19 +45,19 @@ let scrabbleScorer = function oldScrabbleScorer(word) {
 const SimpleScore = {
   name: "Simple Score",
   description: "Each letter is worth 1 point.",
-  scoringFunction: simpleScorer,
+  scorerFunction: simpleScorer,
 };
 
 const BonusVowels = {
   name: "Bonus Vowels.",
   description: "Vowels are 3 pts, consonants are 1 pt.",
-  scoringFunction: vowelBonusScorer,
+  scorerFunction: vowelBonusScorer,
 };
 
 const Scrabble = {
   name: "Traditional.",
   description: "The traditional scoring algorithm.",
-  scoringFunction: scrabbleScorer,
+  scorerFunction: scrabbleScorer,
 };
 
 // your job is to finish writing these functions and variables that we've named //
@@ -84,6 +70,7 @@ function initialPrompt() {
 }
 
 const scoringAlgorithms = [SimpleScore, BonusVowels, Scrabble];
+
 function scorerPrompt(word) {
   const multilineString = `
    Which scoring algorithm would you like to use?
