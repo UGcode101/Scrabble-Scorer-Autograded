@@ -84,7 +84,7 @@ function scorerPrompt(word) {
   console.log("algorithm name: ", scoringAlgorithms[scorerAlgorithm].name);
   console.log(
     "scoringFunction result: ",
-    scoringAlgorithms[scorerAlgorithm].scoringFunction(word)
+    scoringAlgorithms[scorerAlgorithm].scorerFunction(word)
   );
 }
 
